@@ -32,7 +32,7 @@ def inference_an_input(model: torch.nn.Module,
     model.eval()
 
     spectrogram, time_domain_padded_size = preprocess.convert_to_spectrogram(
-        in_wav, n_fft, win_length, hop_length, sample_rate, resample)
+        in_wav, n_fft, win_length, hop_length, sample_rate, True, resample)
     magnitude, phase = torch.abs(spectrogram), torch.angle(spectrogram)
     data, freq_domain_padded_size = preprocess.split_tensors_with_padding(
         magnitude, n_frame_in_segment)
